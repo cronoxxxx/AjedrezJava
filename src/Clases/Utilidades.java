@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public abstract class Utilidades {
 
+
+
     public static void pintarMovimientos(int[][] movs, Pieza[][] casillas) {
         for (int i = 0; i < movs.length; i++) {
             int x = movs[i][0];
@@ -13,7 +15,8 @@ public abstract class Utilidades {
 
             if (x >= 0 && x < casillas[0].length && y >= 0 && y < casillas.length) {
                 if (movs[i][0] != -1 && movs[i][1] != -1) {
-                    System.out.println(i + ": (" + x + "," + y + ") " + comprobarSiMata(x, y, casillas));
+                    char letraX = (char) ('A'+x);
+                    System.out.println(i + ": (" + letraX+ (y+1) + ") " + comprobarSiMata(x, y, casillas));
                 }
             }
         }
@@ -43,7 +46,7 @@ public abstract class Utilidades {
 
             if(lector.hasNextInt()){
                 c=lector.nextInt();
-                if(c<Tablero.minColumnas || c>Tablero.maxColumnas){
+                if(c<Tablero.minColumnas+1 || c>Tablero.maxColumnas+1){
                     mostrarErrorFueraRango();
                 }
             }
@@ -51,7 +54,7 @@ public abstract class Utilidades {
                 mostrarErrorEntero();
             }
 
-        }while(c<Tablero.minColumnas || c>Tablero.maxColumnas);
+        }while(c<Tablero.minColumnas+1 || c>Tablero.maxColumnas+1);
         return c;
     }
     public static void mostrarErrorEntero(){

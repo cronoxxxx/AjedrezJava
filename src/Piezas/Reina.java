@@ -17,7 +17,7 @@ public class Reina extends Pieza{
 
         for(int i=0; i<movimientos.length; i++)
         {
-            movimientos[i][0]=-1;
+            movimientos[i][0]=-1; //MANEJO DE VALORES NO VALIDOS PARA QUE LAS PIEZAS NO SE MUEVAN ENTRE SI DENTRO DE ESAS POSICIONES
             movimientos[i][1]=-1;
         }
 

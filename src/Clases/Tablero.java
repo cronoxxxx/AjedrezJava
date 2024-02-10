@@ -47,10 +47,10 @@ public class Tablero {
 
     public String toString() {
         String cadena = "  ADRIAN SAAVEDRA\n";
-        cadena += " +----------------\n";
+        cadena += "   A   B   C  D  E   F   G   H\n";
 
         for (int i = casillas.length - 1; i >= 0; i--) {
-            cadena += (i) + "|";
+            cadena += (i+1) + "|";
 
             for (int j = 0; j < casillas[i].length; j++) {
                 if (casillas[i][j] == null) {

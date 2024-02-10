@@ -1,15 +1,17 @@
 package Clases;
 import Piezas.Rey;
 
-
+import java.util.Scanner;
 
 
 public class Aplicacion {
     public static void main(String[] args) {
+        Scanner entrada= new Scanner(System.in);
+
         String turno = "N";
         int[][] movs = null;
         int x,y,contador = 0;
-
+        char letra;
         //Crear tablero
         Tablero t = new Tablero();
         System.out.println("Empiezan blancas");
@@ -22,11 +24,12 @@ public class Aplicacion {
             //y que la pieza seleccionada tenga movimientos posibles
             do{
                 //Pedir coordenadas
-                System.out.println("Coordenadas de la pieza a mover (x,y):");
-                System.out.print("- x: ");
-                x=Utilidades.pedirCoordenadas();
-                System.out.print("- y: ");
-                y=Utilidades.pedirCoordenadas();
+                System.out.println("Coordenadas de la pieza a mover (columna y fila): por ejemplo: (A2)");
+                System.out.print("- letra: ");
+                letra=entrada.next().charAt(0);
+                x=mapearLetra(letra);
+                System.out.print("- numero: ");
+                y=Utilidades.pedirCoordenadas()-1;
 
                 if(t.casillas[y][x]==null){
                     System.out.println(t);
@@ -77,6 +80,30 @@ public class Aplicacion {
         mostrarMensajeGanador(turno);
 
     }
+    public static int mapearLetra(char letra) {
+        // Método para mapear la letra a un valor numérico
+        switch (letra) {
+            case 'A':
+                return 0;
+            case 'B':
+                return 1;
+            case 'C':
+                return 2;
+            case 'D':
+                return 3;
+            case 'E':
+                return 4;
+            case 'F':
+                return 5;
+            case 'G':
+                return 6;
+            case 'H':
+                return 7;
+            default:
+                return -1; // Valor por defecto en caso de letra no válida
+        }
+    }
+    
 
     public static void mostrarMensajeGanador(String turno){
         System.out.println("La partida ha acabado! Ha ganado "+turno);
