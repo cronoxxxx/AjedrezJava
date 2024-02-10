@@ -6,15 +6,20 @@ import java.util.Scanner;
 
 public abstract class Utilidades {
 
-    public static void pintarMovimientos(int[][] movs, Pieza[][] casillas){
-        for(int i=0; i<movs.length; i++){
-            if(movs[i][0] != -1 && movs[i][1] != -1){
-                System.out.println(i+": ("+movs[i][0]+","+movs[i][1]+") "+comprobarSiMata(movs, movs[i][0], movs[i][1], casillas));
+    public static void pintarMovimientos(int[][] movs, Pieza[][] casillas) {
+        for (int i = 0; i < movs.length; i++) {
+            int x = movs[i][0];
+            int y = movs[i][1];
+
+            if (x >= 0 && x < casillas[0].length && y >= 0 && y < casillas.length) {
+                if (movs[i][0] != -1 && movs[i][1] != -1) {
+                    System.out.println(i + ": (" + x + "," + y + ") " + comprobarSiMata(x, y, casillas));
+                }
             }
         }
     }
 
-    public static String comprobarSiMata(int[][] movs, int x, int y, Pieza[][] casillas){
+    public static String comprobarSiMata(int x, int y, Pieza[][] casillas){
         if(casillas[y][x] != null){
             return "Puedes matar";
         }

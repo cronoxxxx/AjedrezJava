@@ -46,10 +46,10 @@ public class Tablero {
     }
 
     public String toString() {
-        String cadena = "  WALTHER SAAVEDRA\n"; // Invertir la columna de letras
+        String cadena = "  ADRIAN SAAVEDRA\n";
         cadena += " +----------------\n";
 
-        for (int i = casillas.length - 1; i >= 0; i--) { // Iterar desde abajo hacia arriba
+        for (int i = casillas.length - 1; i >= 0; i--) {
             cadena += (i) + "|";
 
             for (int j = 0; j < casillas[i].length; j++) {
@@ -63,7 +63,7 @@ public class Tablero {
         }
 
         cadena += " +----------------\n";
-        cadena += "  1 DAM \n"; // Invertir la fila de números
+        cadena += "  1DAM\n";
 
         return cadena;
     }
@@ -73,7 +73,7 @@ public class Tablero {
 
         if(p instanceof Caballo || p instanceof Rey){
             for(int i=0; i<movs.length; i++){
-                if(movs[i][0] != -1 && movs[i][0] != -1){
+                if(movs[i][0] != -1 && movs[i][1] != -1){
                     if( llenaYMismoColor(p, movs[i][0], movs[i][1]) ){
                         movs[i][0]=-1;
                         movs[i][1]=-1;
@@ -178,7 +178,7 @@ public class Tablero {
 
         if(p instanceof Alfil || p instanceof Reina){
             for(int i=0; i<movs.length; i++){
-                if(movs[i][0] != -1 && movs[i][1] != -1){
+                if(movs[i][0] != -1 ){
                     //arriba izquierda
                     if(movs[i][0]<p.getPosX() && movs[i][1]<p.getPosY()){
                         if(llenaYMismoColor(p, movs[i][0], movs[i][1])){
@@ -258,31 +258,35 @@ public class Tablero {
         return movs;
     }
 
-    private boolean llenaYMismoColor(Pieza p, int x, int y){
-        if( casillas[y][x] != null && p.getColor().equals(casillas[y][x].getColor()) ){
-            return true;
+    private boolean llenaYMismoColor(Pieza p, int x, int y) {
+        // Asegurarse de que las coordenadas estén dentro de los límites
+        if (x >= 0 && x < casillas[0].length && y >= 0 && y < casillas.length) {
+            if (casillas[y][x] != null && p.getColor().equals(casillas[y][x].getColor())) {
+                return true;
+            }
         }
-        else{
-            return false;
-        }
+        return false;
     }
 
-    private boolean llenaYDistintoColor(Pieza p, int x, int y){
-        if( casillas[y][x] != null && !p.getColor().equals(casillas[y][x].getColor()) ){
-            return true;
+
+    private boolean llenaYDistintoColor(Pieza p, int x, int y) {
+        // Asegurarse de que las coordenadas estén dentro de los límites
+        if (x >= 0 && x < casillas[0].length && y >= 0 && y < casillas.length) {
+            if (casillas[y][x] != null && !p.getColor().equals(casillas[y][x].getColor())) {
+                return true;
+            }
         }
-        else{
-            return false;
-        }
+        return false;
     }
 
-    private boolean peonNoAtaque(Pieza p, int x, int y){
-        if( casillas[y][x] == null && x != p.getPosX() ){
-            return true;
+    private boolean peonNoAtaque(Pieza p, int x, int y) {
+        // Asegurarse de que las coordenadas estén dentro de los límites
+        if (x >= 0 && x < casillas[0].length && y >= 0 && y < casillas.length) {
+            if (casillas[y][x] == null && x != p.getPosX()) {
+                return true;
+            }
         }
-        else{
-            return false;
-        }
+        return false;
     }
 
     public static boolean puedeMover(int num, int[][] movs) {
