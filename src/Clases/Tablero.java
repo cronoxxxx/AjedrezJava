@@ -7,7 +7,7 @@ public class Tablero {
 
     public static final int maxColumnas = 7;
     public static final int minColumnas = 0;
-    static Pieza[][] casillas = new Pieza[8][8];
+    public static Pieza[][] casillas = new Pieza[8][8];
 
     public Tablero(){
 
@@ -44,6 +44,9 @@ public class Tablero {
             casillas[1][i] = new Peon(1,i,"N");
         }
     }
+
+
+
 
     public String toString() {
         String cadena = "  ADRIAN SAAVEDRA\n";
@@ -91,7 +94,10 @@ public class Tablero {
                     }
                 }
             }
+
         }
+
+
 
 
         if (p instanceof Torre || p instanceof Reina){ //Deshabilita movimientos
@@ -287,7 +293,7 @@ public class Tablero {
 
         // Asegurarse de que las coordenadas estén dentro de los límites
         if (x >= 0 && x < casillas[0].length && y >= 0 && y < casillas.length) {
-            if (casillas[y][x] == null && x != p.getPosX() ) { //Si casilla esta nula y se encuentra en la misma columna (A)
+            if (casillas[y][x] == null && x != p.getPosX()) { //Si casilla esta nula y se encuentra en la misma columna (A)
                 return true;
             }
         }
