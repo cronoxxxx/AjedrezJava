@@ -25,13 +25,16 @@ public class Peon extends Pieza {
         }
 
         if( super.getColor().equals("N") ){
-            if( super.getPosY()==1 ){
+            if( super.getPosY()==1 ){ //Si esta en la fila 1, se mueve de uno o de 2 ;) (Problema resuelto)
                 movimientos[1][0]=(super.getPosX());
                 movimientos[1][1]=(super.getPosY()+2);
-            }
-            if( super.getPosY()< Tablero.maxColumnas ){
+
+
                 movimientos[0][0]=(super.getPosX());
                 movimientos[0][1]=(super.getPosY()+1);
+            }
+            if(  super.getPosY()<Tablero.maxColumnas ){
+
 
                 //Posiciones para ataque
                 movimientos[2][0]=(super.getPosX()-1);
@@ -46,10 +49,13 @@ public class Peon extends Pieza {
             if( super.getPosY()==6 ){
                 movimientos[1][0]=(super.getPosX());
                 movimientos[1][1]=(super.getPosY()-2);
-            }
-            if( super.getPosY()>Tablero.minColumnas ){
+
+
                 movimientos[0][0]=(super.getPosX());
                 movimientos[0][1]=(super.getPosY()-1);
+            }
+            if( super.getPosY()>Tablero.minColumnas ){
+
 
                 //Posiciones para ataque
                 movimientos[2][0]=(super.getPosX()-1);

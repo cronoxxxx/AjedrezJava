@@ -4,7 +4,7 @@ import Piezas.Pieza;
 
 import java.util.Scanner;
 
-public abstract class Utilidades {
+public abstract class Utilidades { //No hay instancia
 
 
 
